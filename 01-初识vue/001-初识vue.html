@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 解决vue插值闪烁的问题 */
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root" v-cloak>
+        <h1>{{ message }}</h1>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    // 关闭vue 在启动时生成的生产提示
+    Vue.config.productionTip = false;
+
+    // 创建vue实例
+    const vm = new Vue({ // 传一个配置对象
+        el: '#root', // Element简写 选中了一个css选择器 :标识当前的vue实例为哪个容器服务的
+        // el: cocument.getElementById('root'), // 也可以放一个dom对象
+        data() {
+            // 数据只供给el容器使用
+            // 放在其他容器中会不生效
+            return{
+                message: 'Hello'
+            }
+        }
+    });
+</script>
+</html>

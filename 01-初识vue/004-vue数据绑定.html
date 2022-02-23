@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>004-vue数据绑定.html</title>
+    <style>
+        /* 解决vue插值闪烁的问题 */
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备好第一个容器 -->
+    <div class="root" v-cloak>
+        <!-- v-model指令,只能用在表单类元素上 -->
+        <!-- v-model:value指令,可以简写为v-model -->
+        <!-- input checkbox textarea  -->
+        <span style="margin-right: 10px;">数据单向绑定:v-bind</span><input type="text" v-bind:value="value">
+        <br/>
+        <span style="margin-right: 10px;">数据双向绑定:v-model</span><input type="text" v-model:value="value">
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    // 关闭vue 在启动时生成的生产提示
+    Vue.config.productionTip = false;
+
+    // 创建vue实例
+    const vm = new Vue({
+        el: '.root', // 一个实例只会挂载到一个容器上
+        data() {
+            return{
+                value: 'Hello'
+            }
+        }
+    });
+</script>
+</html>

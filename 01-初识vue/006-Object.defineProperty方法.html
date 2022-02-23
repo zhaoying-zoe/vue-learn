@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>006-Object.defineProperty方法.html</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 1. 定义一个数字,
+    let num = 18;
+    let obj = {
+        name: 'zhaozhao',
+        // age: 18,
+        sex: 'man'
+    }
+
+    // 使用了这个方法后,将两个互不相关的变量（一个对象，一个数字）间产生了某种关系
+    Object.defineProperty(obj, 'age', {
+        // 每次obj的age属性被读取时,会调用这个函数
+        get() {
+            console.log('someone read age');
+            return num;
+        },
+        // 当有人修改age属性时,会调用这个函数
+        set(value) {
+            console.log('有人修改了age属性值为', value);
+            num = value;
+        }
+    })
+
+    // Object.defineProperty(obj, 'age', {
+    //     value: 18,
+    //     enumerable: true, // 控制属性是否可以枚举,默认为false
+    //     writable: true, // 控制属性是否可以被修改,默认为false
+    //     configurable: true // 控制属性是否可以被删除,默认为false
+    // })
+
+    console.log(Object.keys(obj));
+    console.log(obj);
+</script>
+</html>

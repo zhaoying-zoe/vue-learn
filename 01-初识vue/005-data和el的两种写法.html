@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>005-data和el的两种写法.html</title>
+    <style>
+        /* 解决vue插值闪烁的问题 */
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备好第一个容器 -->
+    <div class="root" v-cloak>
+        <span style="margin-right: 10px;">数据单向绑定:v-bind</span><input type="text" v-bind:value="value">
+        <br/>
+        <span style="margin-right: 10px;">数据双向绑定:v-model</span><input type="text" v-model:value="value">
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    // 关闭vue 在启动时生成的生产提示
+    Vue.config.productionTip = false;
+
+    // 创建vue实例
+    const vm = new Vue({
+        // 挂载实例的方法1
+        // el: '.root',
+        data() {
+            return{
+                value: 'Hello'
+            }
+        }
+    });
+    console.log(vm);
+    // 挂载实例的方法2
+    vm.$mount('.root');
+
+    // data的两种写法
+    // 1. 对象式
+    // 2. 函数式 (必须要有个return{})
+
+    // 由vue管理的函数,不要写箭头函数(函数式对象)
+</script>
+</html>
