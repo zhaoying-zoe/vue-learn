@@ -7,9 +7,23 @@
     <title>007-数据代理.html</title>
 </head>
 <body>
-
+    <!-- 数据代理：通过一个对象代理对另一个对象中属性的操作（读、写） -->
 </body>
 <script>
-    
+    let obj1 = {
+        name: 'tom',
+        age: 18
+    };
+    let obj2 = {};
+
+    // 使用 Object.defineProperty 给obj2加一个属性  obj2的值发生变化时，通过get、set来给obj1赋值
+    Object.defineProperty(obj2, 'name', {
+        get() {
+            return obj1.name;
+        },
+        set(val) {
+            obj1.name = val;
+        }
+    })
 </script>
 </html>
