@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>009-事件-基本使用.html</title>
+</head>
+<body>
+    <div id="root">
+        <!-- 事件指令:v-on:click等同于@click -->
+        <button v-on:click="showInfo1">v-on:click</button>
+        <!-- 既要传参数,又要使用event的话,可用$event(vue自带的)在函数调用时占位 -->
+        <button @click="showInfo2(66, $event)">传参数,传event</button>
+        <button @click="showInfo3">提交2</button>
+    </div>
+</body>
+<script src="../js/vue.min.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        methods: {
+            showInfo1(event) {
+                console.log(event);
+            },
+            showInfo2(num, event) {
+                // console.log(this); // this =>> vue实例、vm
+                console.log(num);
+                console.log(event);
+            },
+            // 方法中如果写箭头函数的话,this是window;因为箭头函数没有this,定义时他会向上找this
+            showInfo3: () => {
+                console.log(this); // this ==> window
+            },
+        }
+    });
+</script>
+</html>
