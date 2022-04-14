@@ -10,6 +10,7 @@
     <div id="root">
         <!-- 事件指令:v-on:click等同于@click -->
         <button v-on:click="showInfo1">v-on:click</button>
+        <div>12222</div>
         <!-- 既要传参数,又要使用event的话,可用$event(vue自带的)在函数调用时占位 -->
         <button @click="showInfo2(66, $event)">传参数,传event</button>
         <button @click="showInfo3">提交2</button>
